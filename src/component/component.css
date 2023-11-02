@@ -1,0 +1,84 @@
+.gojoPV {
+    display: flex;
+    margin-left: 8%;
+}
+
+.sukunaPV {
+    display: flex;
+    justify-content: right;
+    margin-right: 7%;
+}
+
+.gojo {
+  width: 20%;
+  float: left;
+}
+
+.sukuna {
+  width: 20%;
+  float: right;
+}
+
+.jjklogo {
+  width: 30%;
+}
+
+.image-disabled {
+  opacity: 30%;
+}
+
+header {
+  background: url("./domain2.webp")
+}
+
+.resetbutton {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+}
+
+.resetbutton:hover{
+  opacity: 80%;
+}
+
+.victorymsg, .resetbutton {
+  animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.missmsg {
+  animation: fadeIn 3s;
+  animation: fadeOut 3s;
+  font-size: 2em;
+}
+
+.yujimsg {
+  animation: fadeIn 3s;
+  animation: fadeOut 3s;
+  margin-top: 10%;
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;} 
+}
+
+.damageshowone {
+  position: fixed;
+  margin-left: 41%;
+  margin-top: 8%;
+}
+
+.damageshowtwo {
+  position: fixed;
+  margin-left: 40%;
+  margin-top: 6%;
+}
