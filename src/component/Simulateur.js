@@ -48,7 +48,7 @@ function Simulateur() {
 
     function damageCounter(redDamage, blueDamage, ultimateDamage) {
       if (redDamage || blueDamage || ultimateDamage)  {
-        setShowDamage("Sukuna c'est pris: " + (redDamage || blueDamage || ultimateDamage) + " de dégâts")
+        setShowDamage("Sukuna s'est pris: " + (redDamage || blueDamage || ultimateDamage) + " de dégâts")
         setTimeout(() => setShowDamage(false), 3000);
       }
     }
@@ -57,10 +57,12 @@ function Simulateur() {
     
     function damageCounterIa(damageIa1, damageIa2, damageIa3) {
       if (damageIa1 || damageIa2 || damageIa3) {
-        setShowDamageIa("Gojo c'est pris: " + (damageIa1 || damageIa2 || damageIa3) + " de dégâts")
+        setShowDamageIa("Gojo s'est pris: " + (damageIa1 || damageIa2 || damageIa3) + " de dégâts")
         setTimeout(() => setShowDamageIa(false), 3000);
       }
     }
+
+  const [isUltimateImageVisible, setIsUltimateImageVisible] = useState(false);
 
     function attackHandler(attackType) {
         if (gameOver) {
@@ -85,21 +87,29 @@ function Simulateur() {
             setSkillUsageCount({ ...skillUsageCount, Blue: skillUsageCount.Blue + 1 });
             break;
         case "Ultimate":
-            ultimateDamage = getRandomInt(50)
             if (
               (skillUsageCount.Red >= 2 && skillUsageCount.Blue >= 1) ||
               (skillUsageCount.Red >= 1 && skillUsageCount.Blue >= 2) ||
               (skillUsageCount.Red >= 3) || (skillUsageCount.Blue >= 3)
             ) {
+              ultimateDamage = getRandomInt(50)
               newObj["currentPV"] -= ultimateDamage;
-              setSkillUsageCount({ ...skillUsageCount, Ultimate: skillUsageCount.Ultimate + 1,
-              Red: 0,
-              Blue: 0,})
-            } else {
-              setErrorMessage(true);
-              setTimeout(() => setErrorMessage(false), 3000);
-            }
-            break;
+              setIsUltimateImageVisible(true);
+
+              setTimeout(() => {
+                setIsUltimateImageVisible(false);
+              setSkillUsageCount({
+            ...skillUsageCount,
+            Ultimate: skillUsageCount.Ultimate + 1,
+            Red: 0,
+            Blue: 0,
+          });
+        }, 3000);
+      } else {
+        setErrorMessage(true);
+        setTimeout(() => setErrorMessage(false), 3000);
+      }
+      break;
         }
         setinfoPlayerTwo(newObj);
         setinfoPlayerOne(rctCure);
@@ -188,6 +198,13 @@ function Simulateur() {
       <img class="jjklogo" src="./img/Jujutsu_Kaisen_logo.png" alt="jjk logo"/>
       <div className="gojoPV">{infoPlayerOne.currentPV}/{infoPlayerOne.maxPV}</div>
       <div className="sukunaPV">{infoPlayerTwo.currentPV}/{infoPlayerTwo.maxPV}</div>
+      {isUltimateImageVisible && (
+      <img
+        src={'./img/gojohollow.webp'}
+        alt="Ultimate"
+        className={`translated-image ${getImageClass()}`}
+      />
+      )}
       {listeAttaque.map((attack, index) => (
         <img
           src={attackImages[attack.type]}
@@ -200,7 +217,7 @@ function Simulateur() {
       ))}
       <div className={'damageshowtwo'}>{showDamage}</div>
       <div className={'damageshowone'}>{showDamageIa}</div>
-      <img class="gojo" src="../img/gojo.webp" alt="gojo"/>
+      <img class="gojo" src="../img/Satoru_Gojo.webp" alt="gojo"/>
       <img class="sukuna" src="./img/Sukuna.webp"/>
       <div>
         {infoPlayerTwo.currentPV <= 0 ? 

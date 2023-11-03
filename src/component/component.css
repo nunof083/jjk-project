@@ -1,6 +1,6 @@
 .gojoPV {
     display: flex;
-    margin-left: 8%;
+    margin-left: 7%;
 }
 
 .sukunaPV {
@@ -28,7 +28,7 @@
 }
 
 header {
-  background: url("./domain2.webp")
+  background: url("./domain2.webp");
 }
 
 .resetbutton {
@@ -81,4 +81,21 @@ header {
   position: fixed;
   margin-left: 40%;
   margin-top: 6%;
+}
+
+@keyframes translateImage {
+  0% {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.translated-image {
+  animation: translateImage 1s linear forwards;
+  transition: opacity 0.2s ease;
+  position: absolute;
 }
