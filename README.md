@@ -1,7 +1,12 @@
-# Game project using ReactJS
+# Little web game project using ReactJS
 
-This is a school project that was made to increase my skills on ReactJS.
+This is a school project that i made for a first use of React.
 
-This project consists on a button game.
+This project consists on a button game it has some functionalities like: 
 
-It has some functionalities with useState, reset button, dmg counter, a game over detector which will disable the buttons when the hp of the player or the Bot is 0, a translatable image when ultimate used.
+  - useState
+  - Reset Button
+  - DMG Counter
+  - A game over detector which will disable the buttons when the hp of the player or the Bot is 0
+  - A translatable image when ultimate skill used (you have to use a certain amount of time to use the ultimate).
+
