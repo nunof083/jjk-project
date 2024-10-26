@@ -8,5 +8,5 @@ This project consists on a button game it has some functionalities like:
   - Reset Button
   - DMG Counter
   - A game over detector which will disable the buttons when the hp of the player or the Bot is 0
-  - A translatable image when ultimate skill used (you have to use a certain amount of time to use the ultimate).
+  - A translatable image when ultimate skill used (you have to use a certain amount of "normal" skills to use the ultimate).
 
